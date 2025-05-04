@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Verificar si ya está inscrito
   const yaInscrito = localStorage.getItem('inscripcionCompletada');
   if (yaInscrito === 'true') {
     document.getElementById('mensaje').textContent = "✅ Ya estás inscrito.";
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('registroForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  // Verificación previa
   if (localStorage.getItem('inscripcionCompletada') === 'true') {
     document.getElementById('mensaje').textContent = "⚠️ Ya has enviado el formulario.";
     return;
@@ -27,7 +25,6 @@ document.getElementById('registroForm').addEventListener('submit', function(e) {
     return;
   }
 
-  // Puedes también guardar un hash del jugadorId en localStorage para más seguridad básica
   db.collection('inscripciones').add({
     jugadorId,
     jugadorTag,

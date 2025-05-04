@@ -11,7 +11,8 @@
     <div class="contenedor-cuadro">
       <input type="text" id="buscador" placeholder="Buscar por Tag o Rol"
         onkeyup="filtrarTabla()" />
-        <button onclick="exportarExcel()" class="btn">Descargar Excel</button>
+      <button onclick="exportarExcel()" class="btnexcel">Descargar
+        Excel</button>
       <div class="main-wrapper">
         <h1 class="titulo-secundario">Jugadores Inscritos</h1>
         <table class="tabla-estilizada">
@@ -42,16 +43,11 @@
     document.getElementById('copyright').textContent = `© ${year} Copa Perso - Todos los derechos reservados.`;
   </script>
 
-    <!-- Firebase SDKs -->
     <script
       src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script
       src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-
-    <!-- Configuración de Firebase -->
     <script src="js/firebase-config.js"></script>
-
-    <!-- Consulta de Firestore -->
     <script>
     const tabla = document.getElementById("tabla-jugadores");
 
