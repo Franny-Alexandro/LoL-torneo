@@ -11,7 +11,7 @@ html {
 body,
 html {
   height: 100%;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Futura', sans-serif;
   color: #fff;
   background: transparent;
   overflow-x: hidden;
@@ -83,22 +83,45 @@ html {
 
 
 h1 {
-  font-size: 4em;
+  font-size: 3capem;
   margin-bottom: 20px;
-  color: #00fff7;
+  color: #e600ff;
   text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
   animation: pulse 2s infinite;
+}
+
+.logo-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Espacio entre elementos */
+}
+
+.logo {
+  width: 250px; /* Cambia este valor según el tamaño deseado */
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.logomodal {
+  width: 175px;  /* Ajusta el tamaño según necesites */
+  height: auto;  /* Mantiene la proporción */
+  margin-bottom: 20px;  /* Espacio debajo de la imagen */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @keyframes pulse {
 
   0%,
   100% {
-    text-shadow: 0 0 10px #00fff7;
+    text-shadow: 0 0 10px #e600ff;
   }
 
   50% {
-    text-shadow: 0 0 20px #00fff7, 0 0 30px #00fff7;
+    text-shadow: 0 0 20px #e600ff, 0 0 30px #7f00ff;
   }
 }
 
