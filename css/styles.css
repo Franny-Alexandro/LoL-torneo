@@ -17,14 +17,22 @@ html {
   overflow-x: hidden;
 }
 
-.background {
-  position: fixed;
+.btn.disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  pointer-events: auto;
+}
+
+.background iframe {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
-  overflow: hidden;
+  border: none;
+  pointer-events: none; 
+  filter: brightness(0.6);
 }
 
 /* Video fondo */
@@ -36,8 +44,6 @@ html {
   height: 100vh;
   object-fit: cover;
   z-index: -1;
-  filter: brightness(0.5);
-  /* oscurece un poco el video */
 }
 
 .background video,

@@ -19,11 +19,12 @@
   <body>
     <!-- Video de fondo -->
     <div class="background">
-      <video id="backgroundVideo" autoplay muted loop playsinline>
-        <source src="resource/vide.mp4" type="video/mp4">
-        Tu navegador no soporta el video.
-      </video>
-      <img id="backgroundImage" src="resource/foto1.jpg" alt="Imagen de fondo">
+      <iframe
+        id="backgroundVideo"
+        src="https://www.youtube.com/embed/Ao67QBMy0T0?autoplay=1&mute=1&loop=1&playlist=Ao67QBMy0T0&controls=0&showinfo=0&modestbranding=1"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen></iframe>
     </div>
 
     <div class="overlay">
@@ -33,7 +34,7 @@
         <a href="#" id="openModal" class="btn">Inscribirse</a>
       </div>
     </div>
-    
+
     <div id="formularioModal" class="modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>
@@ -77,6 +78,16 @@
   const openBtn = document.getElementById("openModal");
   const closeBtn = document.querySelector(".close-btn");
 
+
+  if (localStorage.getItem('inscripcionCompletada') === 'true') {
+    openBtn.textContent = "Ya estás inscrito";
+    openBtn.classList.add('disabled');
+    openBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert("⚠️ Ya has enviado el formulario.");
+  }); 
+}
+
   openBtn.addEventListener("click", (e) => {
     e.preventDefault();
     modal.style.display = "flex";
@@ -91,24 +102,6 @@
       modal.style.display = "none";
     }
   });
-</script>
-
-    <script>
-  const video = document.getElementById("backgroundVideo");
-  const image = document.getElementById("backgroundImage");
-
-  let showVideo = true;
-
-  setInterval(() => {
-    if (showVideo) {
-      video.style.opacity = "0";
-      image.style.opacity = "1";
-    } else {
-      video.style.opacity = "1";
-      image.style.opacity = "0";
-    }
-    showVideo = !showVideo;
-  }, 3000); // Cambia cada 8 segundos (ajusta a gusto)
 </script>
 
     <!-- Scripts personalizados -->
