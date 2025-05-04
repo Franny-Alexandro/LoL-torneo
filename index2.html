@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jugadores Inscritos</title>
+  <link rel="stylesheet" href="css/styles2.css" />
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <h1 class="titulo-secundario">Jugadores Inscritos</h1>
+        <table class="tabla-estilizada">
+          <thead>
+            <tr>
+              <th>Jugador ID</th>
+              <th>Tag</th>
+              <th>Rol</th>
+              <th>Elo</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-jugadores">
+            <!-- Datos se insertan aquí -->
+          </tbody>
+        </table>
+      </div>
+
+  <footer class="footer-fijo">
+    <span id="copyright"></span>
+    Desarrollado por X-Ax300 - Xander0_03.
+  </footer>
+
+  <script>
+    const year = new Date().getFullYear();
+    document.getElementById('copyright').textContent = `© ${year} Copa Perso - Todos los derechos reservados.`;
+  </script>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- Configuración de Firebase -->
+  <script src="js/firebase-config.js"></script>
+
+  <!-- Consulta de Firestore -->
+  <script>
+    const tabla = document.getElementById("tabla-jugadores");
+
+    db.collection("inscripciones").orderBy("fecha", "desc").get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${data.jugadorId}</td>
+            <td>${data.jugadorTag}</td>
+            <td>${data.rol}</td>
+            <td>${data.elo}</td>
+            <td>${new Date(data.fecha.seconds * 1000).toLocaleString()}</td>
+          `;
+          tabla.appendChild(row);
+        });
+      })
+      .catch((error) => {
+        console.error("Error al obtener datos:", error);
+      });
+  </script>
+
+</body>
+</html>

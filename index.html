@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copa Perso - Torneo LoL</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Firebase SDKs -->
+    <script
+      src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  </head>
+  <body>
+    <!-- Video de fondo -->
+    <div class="background">
+      <video id="backgroundVideo" autoplay muted loop playsinline>
+        <source src="resource/vide.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
+      <img id="backgroundImage" src="resource/foto1.jpg" alt="Imagen de fondo">
+    </div>
+
+    <div class="overlay">
+      <h1>Copa Perso</h1>
+      <a href="#" id="openModal" class="btn">Inscribirse</a>
+    </div>
+
+    <div id="formularioModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Formulario de inscripción</h2>
+        <form id="registroForm">
+          <input type="text" id="jugadorId" placeholder="ID del jugador"
+            required>
+          <input type="text" id="jugadorTag" placeholder="# del jugador"
+            required>
+          <label for="rol">Selecciona tu rol</label>
+          <select id="rol" required>
+            <option value>Selecciona tu rol</option>
+            <option value="Top">Top</option>
+            <option value="Jungla">Jungla</option>
+            <option value="Mid">Mid</option>
+            <option value="ADC">ADC</option>
+            <option value="Support">Support</option>
+          </select>
+          <input type="text" id="elo" placeholder="Elo (Ej: Platino IV)"
+            required>
+          <button type="submit">Enviar</button>
+        </form>
+        <p id="mensaje"></p>
+      </div>
+    </div>
+
+    <footer>
+      <spam id="copyright"></spam> Desarrollado por X-Ax300 - Xander0_03.
+    </footer>
+
+    <script>
+    const year = new Date().getFullYear();
+    document.getElementById('copyright').textContent = `© ${year} Copa Perso - Todos los derechos reservados.`;
+  </script>
+
+    <script>
+  const modal = document.getElementById("formularioModal");
+  const openBtn = document.getElementById("openModal");
+  const closeBtn = document.querySelector(".close-btn");
+
+  openBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.style.display = "flex";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+</script>
+
+    <script>
+  const video = document.getElementById("backgroundVideo");
+  const image = document.getElementById("backgroundImage");
+
+  let showVideo = true;
+
+  setInterval(() => {
+    if (showVideo) {
+      video.style.opacity = "0";
+      image.style.opacity = "1";
+    } else {
+      video.style.opacity = "1";
+      image.style.opacity = "0";
+    }
+    showVideo = !showVideo;
+  }, 3000); // Cambia cada 8 segundos (ajusta a gusto)
+</script>
+
+    <!-- Scripts personalizados -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
