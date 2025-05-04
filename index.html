@@ -58,6 +58,8 @@
           </select>
           <input type="text" id="elo" placeholder="Elo (Ej: Platino IV)"
             required>
+          <input type="email" id="correo" placeholder="Correo del jugador"
+            required>
           <button type="submit">Enviar</button>
         </form>
         <p id="mensaje"></p>
@@ -78,7 +80,7 @@
   const openBtn = document.getElementById("openModal");
   const closeBtn = document.querySelector(".close-btn");
 
-
+  
   if (localStorage.getItem('inscripcionCompletada') === 'true') {
     openBtn.textContent = "Ya estás inscrito";
     openBtn.classList.add('disabled');

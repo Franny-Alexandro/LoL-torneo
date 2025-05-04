@@ -20,8 +20,9 @@ document.getElementById('registroForm').addEventListener('submit', function(e) {
   const jugadorTag = document.getElementById('jugadorTag').value.trim();
   const rol = document.getElementById('rol').value.trim();
   const elo = document.getElementById('elo').value.trim();
+  const Correo = document.getElementById('correo').value.trim();
 
-  if (!jugadorId || !jugadorTag || !rol || !elo) {
+  if (!jugadorId || !jugadorTag || !rol || !elo || !Correo) {
     document.getElementById('mensaje').textContent = "❌ Todos los campos son obligatorios.";
     return;
   }
@@ -32,6 +33,7 @@ document.getElementById('registroForm').addEventListener('submit', function(e) {
     jugadorTag,
     rol,
     elo,
+    Correo,
     fecha: new Date()
   })
   .then(() => {
