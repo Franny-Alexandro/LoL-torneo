@@ -21,6 +21,7 @@
               <th>Tag</th>
               <th>Rol</th>
               <th>Elo</th>
+              <th>Correo</th>
               <th>Fecha</th>
             </tr>
           </thead>
@@ -64,6 +65,7 @@
             <td>${data.jugadorTag}</td>
             <td>${data.rol}</td>
             <td>${data.elo}</td>
+            <td>${data.Correo}</td>
             <td>${new Date(data.fecha.seconds * 1000).toLocaleString()}</td>
           `;
           tabla.appendChild(row);
