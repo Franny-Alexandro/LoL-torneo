@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Copa Perso - Torneo LoL</title>
 
-    <!-- Estilos -->
     <link rel="stylesheet" href="css/styles.css" />
 
-    <!-- Firebase SDKs -->
     <script
       src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script
@@ -17,7 +15,6 @@
       src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   </head>
   <body>
-    <!-- Video de fondo -->
     <div class="background">
       <iframe
         id="backgroundVideo"
@@ -47,7 +44,7 @@
             required>
           <input type="text" id="jugadorTag" placeholder="# del jugador"
             required>
-          <label for="rol">Selecciona tu rol</label>
+          <label for="rol">👇Selecciona tu rol👇 </label>
           <select id="rol" required>
             <option value>Selecciona tu rol</option>
             <option value="Top">Top</option>
@@ -99,14 +96,13 @@
     modal.style.display = "none";
   });
 
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
+  // window.addEventListener("click", (e) => {
+  //   if (e.target === modal) {
+  //     modal.style.display = "none";
+  //   }
+  // });
+  
 </script>
-
-    <!-- Scripts personalizados -->
     <script src="js/firebase-config.js"></script>
     <script src="js/main.js"></script>
   </body>

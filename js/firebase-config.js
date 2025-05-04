@@ -1,6 +1,5 @@
 console.log("Firebase config cargado correctamente"); 
 
-// Configuración de Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyCRr5kzkmotrU-bYPt490VBCfVZuWVtt",
     authDomain: "lol-torneos.firebaseapp.com",
@@ -11,7 +10,6 @@ const firebaseConfig = {
     measurementId: "G-5SBZJVVZP0"
   };
   
-  // Inicializar Firebase
   firebase.initializeApp(firebaseConfig);
 
   const db = firebase.firestore();
