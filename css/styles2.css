@@ -5,14 +5,30 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
+    margin: 0;
+    padding: 0;
     height: 100%;
-    font-family: 'Orbitron', sans-serif;
-    background-color: #0f0f0f;
-    color: #fff;
+    background-color: #121212;
+    font-family: 'Futura', sans-serif;
     display: flex;
     flex-direction: column;
+}
+
+body {
+    flex: 1;
+}
+
+.contenedor-cuadro {
+    width: 90vw;
+    max-width: 1400px; 
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 16px;
+    background: #1f1f2e;
+    box-shadow: 0 0 20px rgba(127, 0, 255, 0.3);
+    color: #fff;
+    text-align: center;
 }
 
 /* Fondo animado */
@@ -36,11 +52,10 @@ body {
 
 /* Estilos para el título */
 .titulo-secundario {
-    font-size: 3em;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #e600ff;
-    text-shadow: 0 0 10px #e600ff, 0 0 20px #7f00ff;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #7e6e17;
+    text-shadow: 1px 1px 2px #000;
 }
 
 /* Título */
@@ -68,25 +83,34 @@ body {
 /* Estilo tabla */
 .tabla-estilizada {
     width: 100%;
-    max-width: 1000px;
-    margin: auto;
     border-collapse: collapse;
-    background-color: #1a1a1a;
-    box-shadow: 0 0 12px #7f00ff66;
-    border-radius: 10px;
-    overflow: hidden;
+    margin-top: 20px;
 }
 
-.tabla-estilizada th,
-.tabla-estilizada td {
-    padding: 15px;
+.tabla-estilizada th, .tabla-estilizada td {
+    border: 1px solid #444;
+    padding: 14px;
+    font-size: 1.3em;
     text-align: center;
-    border-bottom: 1px solid #333;
+    color: #fff;
 }
+
+.tabla-estilizada thead {
+    background-color: #7f00ff;
+}
+
+.tabla-estilizada tbody tr:nth-child(odd) {
+    background-color: #2a2a3b;
+}
+
+.tabla-estilizada tbody tr:nth-child(even) {
+    background-color: #1e1e2e;
+}
+
 
 .tabla-estilizada th {
     background-color: #2e003e;
-    color: #ff00ff;
+    color: #ffffff;
 }
 
 .tabla-estilizada tr:hover {
@@ -94,12 +118,52 @@ body {
 }
 
 /* Footer fijo al fondo */
+/* Footer */
 .footer-fijo {
-    padding: 20px;
+    padding: 15px;
+    background-color: #121212;
+    color: #ccc;
     text-align: center;
-    background-color: #0d0d0d;
-    color: #aaa;
-    border-top: 1px solid #222;
-    box-shadow: 0 -2px 15px #7f00ff33;
     font-size: 0.9em;
+    margin-top: auto;
+}
+
+/* Botón de exportar Excel */
+.btn {
+    margin: 30px auto 30px 80%;
+    display: block;
+    padding: 10px 20px;
+    background-color: #0e9668;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.3em;
+    cursor: pointer;
+    box-shadow: 0 0 10px #461874;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0aa0a0;
+    box-shadow: 0 0 20px #a000ff;
+}
+
+/* Input del buscador */
+#buscador {
+    margin: 30px auto 30px 80%;
+    padding: 8px;
+    width: 100%;
+    max-width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 1.3em;
+}
+
+#buscador::placeholder {
+    color: #aaa;
 }

@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jugadores Inscritos</title>
-  <link rel="stylesheet" href="css/styles2.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jugadores Inscritos</title>
+    <link rel="stylesheet" href="css/styles2.css" />
+  </head>
+  <body>
 
-    <div class="main-wrapper">
+    <div class="contenedor-cuadro">
+      <input type="text" id="buscador" placeholder="Buscar por Tag o Rol"
+        onkeyup="filtrarTabla()" />
+        <button onclick="exportarExcel()" class="btn">Descargar Excel</button>
+      <div class="main-wrapper">
         <h1 class="titulo-secundario">Jugadores Inscritos</h1>
         <table class="tabla-estilizada">
           <thead>
@@ -25,26 +29,29 @@
           </tbody>
         </table>
       </div>
+    </div>
 
-  <footer class="footer-fijo">
-    <span id="copyright"></span>
-    Desarrollado por X-Ax300 - Xander0_03.
-  </footer>
+    <footer class="footer-fijo">
+      <span id="copyright"></span>
+      Desarrollado por X-Ax300 - Xander0_03.
+    </footer>
 
-  <script>
+    <script>
     const year = new Date().getFullYear();
     document.getElementById('copyright').textContent = `© ${year} Copa Perso - Todos los derechos reservados.`;
   </script>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <!-- Firebase SDKs -->
+    <script
+      src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
-  <!-- Configuración de Firebase -->
-  <script src="js/firebase-config.js"></script>
+    <!-- Configuración de Firebase -->
+    <script src="js/firebase-config.js"></script>
 
-  <!-- Consulta de Firestore -->
-  <script>
+    <!-- Consulta de Firestore -->
+    <script>
     const tabla = document.getElementById("tabla-jugadores");
 
     db.collection("inscripciones").orderBy("fecha", "desc").get()
@@ -67,5 +74,34 @@
       });
   </script>
 
-</body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <script>
+  function exportarExcel() {
+    const tabla = document.getElementById("tabla-jugadores");
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.table_to_sheet(tabla);
+    XLSX.utils.book_append_sheet(wb, ws, "Jugadores");
+    XLSX.writeFile(wb, "jugadores_inscritos.xlsx");
+  }
+
+  function filtrarTabla() {
+    const filtro = document.getElementById("buscador").value.toLowerCase();
+    const filas = document.querySelectorAll("#tabla-jugadores tr");
+
+    filas.forEach(fila => {
+      const tag = fila.cells[1]?.textContent.toLowerCase() || "";
+      const rol = fila.cells[2]?.textContent.toLowerCase() || "";
+
+      if (tag.includes(filtro) || rol.includes(filtro)) {
+        fila.style.display = "";
+      } else {
+        fila.style.display = "none";
+      }
+    });
+  }
+</script>
+
+  </body>
 </html>
