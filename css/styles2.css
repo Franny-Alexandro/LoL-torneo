@@ -50,8 +50,8 @@ body {
 .titulo-secundario {
     font-size: 2em;
     margin-bottom: 20px;
-    color: #7e6e17;
-    text-shadow: 1px 1px 2px #000;
+    color: #fa08ee;
+    text-shadow: 0 0 10px #ff00d4, 0 0 20px #d205da;
 }
 
 .encabezado-jugadores {
@@ -131,7 +131,7 @@ body {
     border-radius: 8px;
     font-size: 1.3em;
     cursor: pointer;
-    box-shadow: 0 0 10px #461874;
+    box-shadow: 0 0 10px #00ff95;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
