@@ -1,46 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const yaInscrito = localStorage.getItem('inscripcionCompletada');
-  if (yaInscrito === 'true') {
-    document.getElementById('mensaje').textContent = "✅ Ya estás inscrito.";
-    document.getElementById('registroForm').style.display = 'none';
-  }
+  // No usamos localStorage aquí
+  document.getElementById('registroForm').style.display = 'block';
 });
 
-document.getElementById('registroForm').addEventListener('submit', function(e) {
+document.getElementById('registroForm').addEventListener('submit', async function (e) {
   e.preventDefault();
-
-  if (localStorage.getItem('inscripcionCompletada') === 'true') {
-    document.getElementById('mensaje').textContent = "⚠️ Ya has enviado el formulario.";
-    return;
-  }
 
   const jugadorId = document.getElementById('jugadorId').value.trim();
   const jugadorTag = document.getElementById('jugadorTag').value.trim();
   const rol = document.getElementById('rol').value.trim();
   const elo = document.getElementById('elo').value.trim();
-  const Correo = document.getElementById('correo').value.trim();
+  const correo = document.getElementById('correo').value.trim();
 
-  if (!jugadorId || !jugadorTag || !rol || !elo || !Correo) {
+  if (!jugadorId || !jugadorTag || !rol || !elo || !correo) {
     document.getElementById('mensaje').textContent = "❌ Todos los campos son obligatorios.";
     return;
   }
 
-  db.collection('inscripciones').add({
-    jugadorId,
-    jugadorTag,
-    rol,
-    elo,
-    Correo,
-    fecha: new Date()
-  })
-  .then(() => {
+  try {
+    // Verificar si ya existe un jugador con ese correo, ID o Tag
+    const consultaCorreo = await db.collection('inscripciones').where('Correo', '==', correo).get();
+    const consultaId = await db.collection('inscripciones').where('jugadorId', '==', jugadorId).get();
+    const consultaTag = await db.collection('inscripciones').where('jugadorTag', '==', jugadorTag).get();
+
+    if (!consultaCorreo.empty || !consultaId.empty || !consultaTag.empty) {
+      document.getElementById('mensaje').textContent = "⚠️ Ya estás inscrito con ese correo, ID o tag.";
+      return;
+    }
+
+    // Si no existe, lo guardamos
+    await db.collection('inscripciones').add({
+      jugadorId,
+      jugadorTag,
+      rol,
+      elo,
+      Correo: correo,
+      fecha: new Date()
+    });
+
     document.getElementById('mensaje').textContent = "✅ Inscripción exitosa.";
     document.getElementById('registroForm').reset();
-    localStorage.setItem('inscripcionCompletada', 'true');
     document.getElementById('registroForm').style.display = 'none';
-  })
-  .catch((error) => {
-    console.error("Error al guardar:", error);
+
+  } catch (error) {
+    console.error("Error al verificar o guardar:", error);
     document.getElementById('mensaje').textContent = "❌ Error: " + error.message;
-  });
+  }
 });
