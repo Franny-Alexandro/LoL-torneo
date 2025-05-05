@@ -99,9 +99,57 @@
       if (e.target === modal) {
         modal.style.display = "none";
       }
-    });
-  
+    });  
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("resource/base64audio.txt")
+      .then(response => response.json())
+      .then(json => {
+        const base64 = json.audio?.data;
+        if (!base64) {
+          console.error("No se encontró el audio en el JSON.");
+          return;
+        }
+
+        const audio = new Audio(`data:audio/mpeg;base64,${base64}`);
+        audio.loop = true;
+        audio.volume = 0.5;
+
+        const reproducirAudio = () => {
+          audio.play().then(() => {
+            console.log("Audio reproducido.");
+          }).catch(err => {
+            console.error("Error al reproducir el audio:", err);
+          });
+        };
+
+        const btn = document.createElement('button');
+        btn.style.position = 'absolute';
+        btn.style.top = '0';
+        btn.style.left = '0';
+        btn.style.width = '100px';
+        btn.style.height = '100px';
+        btn.style.opacity = '0'; // Invisible
+        document.body.appendChild(btn);
+
+        btn.addEventListener("click", reproducirAudio);
+
+        setTimeout(() => {
+          btn.click();
+        }, 1000);
+
+        document.body.addEventListener("click", reproducirAudio);
+
+      })
+      .catch(err => console.error("Error cargando el audio:", err));
+  });
+</script>
+  
+  
+  
+
     <script src="js/firebase-config.js"></script>
     <script src="js/main.js"></script>
   </body>
