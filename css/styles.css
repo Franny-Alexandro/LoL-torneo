@@ -128,7 +128,7 @@ h1 {
 
 .btn {
   padding: 15px 30px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: white;
   background: linear-gradient(45deg, #e600ff, #7f00ff);
   border: none;
@@ -169,10 +169,10 @@ h1 {
 
 .formulario input,
 .formulario select {
-  padding: 12px;
+  padding: 19px;
   margin: 12px 0;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 100%;
   background: #222;
   color: #fff;
@@ -219,8 +219,8 @@ h1 {
   padding: 40px 30px;
   border-radius: 15px;
   width: 100%;
-  max-width: 700px;
-  box-shadow: 0 0 100px #adab0466;
+  max-width: 400px;
+  box-shadow: 0 0 100px #b308aa7c;
   animation: zoomIn 0.3s ease-in-out;
   color: #fff;
   transform: scale(1.05); 
@@ -230,22 +230,22 @@ h1 {
 .modal-content h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #74ac0c;
-  font-size: 1.3em;
+  color: #ac0ca4;
+  font-size: 1.1em;
 }
 
 #registroForm {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  font-size: 1.3em;
+  font-size: 0.8em;
 }
 
 #registroForm input,
 #registroForm select,
 #registroForm button {
   padding: 12px;
-  font-size: 16px;
+  font-size: 10px;
   border-radius: 8px;
   border: none;
   outline: none;
@@ -265,6 +265,7 @@ h1 {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 15px;
 }
 
 #registroForm button:hover {
@@ -291,7 +292,7 @@ label {
 
 .close-btn {
   float: right;
-  font-size: 50px;
+  font-size: 40px;
   cursor: pointer;
   color: #960c96;
   font-weight: bold;
@@ -317,4 +318,174 @@ footer {
   font-size: 0.9em;
   border-top: 1px solid #222;
   box-shadow: 0 -2px 15px #7f00ff33;
+}
+
+
+/* Estilos base - ya optimizados */
+
+/* Media Queries Responsivas */
+
+/* Teléfonos pequeños: hasta 480px */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  .logo {
+    width: 150px;
+  }
+
+  .logomodal {
+    width: 120px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+
+  .formulario {
+    padding: 30px 10px;
+  }
+
+  .modal-content {
+    padding: 20px 15px;
+    font-size: 1em;
+  }
+
+  #registroForm button {
+    font-size: 0.9em;
+  }
+
+  #registroForm input,
+  #registroForm select {
+    font-size: 0.7em;
+  }
+
+  .close-btn {
+    font-size: 30px;
+  }
+
+  footer {
+    font-size: 0.8em;
+    padding: 10px;
+  }
+}
+
+/* Teléfonos grandes y tablets pequeñas: 481px a 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+  h1 {
+    font-size: 2.2em;
+  }
+
+  .logo {
+    width: 180px;
+  }
+
+  .logomodal {
+    width: 130px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 1.05em;
+  }
+
+  .modal-content {
+    padding: 25px 20px;
+    font-size: 1.1em;
+  }
+
+  #registroForm button {
+    font-size: 1em;
+  }
+
+  #registroForm input,
+  #registroForm select {
+    font-size: 0.8em;
+  }
+
+  .close-btn {
+    font-size: 35px;
+  }
+}
+
+/* Tablets y pantallas medianas: 768px a 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  .logo {
+    width: 200px;
+  }
+
+  .logomodal {
+    width: 150px;
+  }
+
+  .btn {
+    font-size: 1.1em;
+  }
+
+  .modal-content {
+    padding: 30px 25px;
+  }
+
+  #registroForm button {
+    font-size: 1em;
+  }
+
+  #registroForm input,
+  #registroForm select {
+    font-size: 0.9em;
+  }
+}
+
+/* Pantallas grandes (PC): 1024px a 1919px */
+@media (min-width: 1024px) and (max-width: 1919px) {
+  h1 {
+    font-size: 3em;
+  }
+
+  .logo {
+    width: 250px;
+  }
+
+  .logomodal {
+    width: 175px;
+  }
+}
+
+/* Pantallas extra grandes (TVs y monitores ultra-wide): 1920px en adelante */
+@media (min-width: 1920px) {
+  h1 {
+    font-size: 4em;
+  }
+
+  .logo {
+    width: 300px;
+  }
+
+  .logomodal {
+    width: 220px;
+  }
+
+  .btn {
+    font-size: 1.3em;
+    padding: 20px 40px;
+  }
+
+  .formulario {
+    padding: 80px 40px;
+  }
+
+  .modal-content {
+    font-size: 1.5em;
+  }
+
+  footer {
+    font-size: 1em;
+    padding: 30px;
+  }
 }
